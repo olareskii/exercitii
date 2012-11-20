@@ -1,0 +1,9 @@
+ piese = {
+       'anvelope' => 'A',
+       'discuri'=>'D',
+       'volan' => 'V'
+}
+
+for piesa, sigla in piese
+  puts "%s  are sigla %s", % [piesa, sigla]
+end
