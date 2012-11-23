@@ -1,27 +1,27 @@
-requiare 'open-uri'
+require 'open-uri'
 
 WORD_URL = "http://learncodethehardway.org/words.txt"
 WORDS = []
 
 PHRASES = {
-  "class ### < ###\nend" => "Make a class named ### that ia-a ###.",
+  "class ### < ###\nend" => "Make a class named ### that is-a ###.",
   "class ###\n\tdef initialeze@@@\n\tend\nend" => "claa ### has-a initialize that takes @@@ parameters.",
   "class ###\n\tdef ***(@@@)\n\tend" => "class ### has-a function named *** that takes @@@ parameters.",
   "*** = ###.new()" => "Set *** to aninstance of class ###.",
   "***.***(@@@)" => "From ***get the *** function, and call it with parametars @@@.",
-  "***.***" = '***' => "From *** get the *** atttribute and set it to '***'."
+  "***.*** = '***'" => "From *** get the *** atttribute and set it to '***'."
 }
 
-PHrase_FIRST = ARGV[0] == "english"
+PHRASE_FIRST = ARGV[0] == "english"
 
 open(WORD_URL) {|f|
   f.each_line {|word| WORDS.push(word.chomp)}
 }
 
 def craft_names(rand_words, snippet, pattern, caps=false)
-  names = snipet.scann(patter).map do
+  names = snippet.scan(pattern).map do
   word = rand_words.pop()
-  pats ? word.capitalize : word
+  caps ? word.capitalize : word
   end
   
   return names * 2
@@ -41,9 +41,9 @@ def convert(snippet, phrase)
   rand_words = WORDS.sort_by {rand}
   class_names = craft_names(rand_words, snippet, /###/, caps=true)
   other_names = craft_names(rand_words, snippet, /\*\*\*/)
-  param_names(rand_words, snippet, /@@@/)
+  param_names = craft_params(rand_words, snippet, /@@@/)
   
-  results []
+  results = []
   
 for sentence in [snippet, phrase]
 result = sentence.gsub(/###/) {|x| class_names.pop }
